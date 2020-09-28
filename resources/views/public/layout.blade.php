@@ -34,10 +34,28 @@
                     </div>
                     <div class="col-md-6">
                         <div class="tb-menu">
-                            <a href="">About</a>
-                            <a href="">Privacy</a>
-                            <a href="">Terms</a>
-                            <a href="">Contact</a>
+                            <!-- Right Side Of Navbar -->
+                                <!-- Authentication Links -->
+                                @guest
+                                        <a  href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    @if (Route::has('register'))
+                                            <a  href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    @endif
+                                @else
+                                        <a href="#">
+                                            {{ Auth::user()->name }}
+                                        </a>
+
+                                            <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                @endguest
                         </div>
                     </div>
                 </div>
