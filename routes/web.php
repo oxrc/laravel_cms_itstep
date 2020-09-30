@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// This is just a comment.
 
 Route::get('/', function () {
     return view('public.welcome');
